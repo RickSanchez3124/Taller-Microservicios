@@ -1,4 +1,5 @@
 from .models import Measurement
+from .models import Place
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
@@ -31,6 +32,8 @@ def MeasurementCreate(request):
             measurement.value = data_json['value']
             measurement.unit = data_json['unit']
             measurement.place = data_json['place']
+            if !Place.place_list.contains(measurement.place)
+                return HttpResponse("unsuccessfully created measurement. Variable does not exist")
             measurement.save()
             return HttpResponse("successfully created measurement")
         else:
